@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MarketCashier.API", "MarketCashier.API", "{54F2E3CD-77A1-41E6-8222-933B7CA501E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketCashier.API", "MarketCashier.API\MarketCashier.API\MarketCashier.API.csproj", "{2D8E96AB-EA0D-4572-B3FB-814BF09C0A22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarketCashier.API", "MarketCashier.API\MarketCashier.API.csproj", "{2D8E96AB-EA0D-4572-B3FB-814BF09C0A22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketCashier.Domain", "MarketCashier.Domain\MarketCashier.Domain.csproj", "{2D6D5770-1C8C-4518-9BB6-92ADAB5B2413}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{2D8E96AB-EA0D-4572-B3FB-814BF09C0A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8E96AB-EA0D-4572-B3FB-814BF09C0A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8E96AB-EA0D-4572-B3FB-814BF09C0A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D6D5770-1C8C-4518-9BB6-92ADAB5B2413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D6D5770-1C8C-4518-9BB6-92ADAB5B2413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D6D5770-1C8C-4518-9BB6-92ADAB5B2413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D6D5770-1C8C-4518-9BB6-92ADAB5B2413}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
