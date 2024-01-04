@@ -5,8 +5,10 @@ using MarketCashier.Application;
 using MarketCashier.Application.Interfaces;
 using MarketCashier.Domain;
 using MarketCashier.Repository;
+using MarketCashier.Repository.Context;
 using MarketCashier.Repository.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,6 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<DataContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("MarketCashier-SQLServer")));
 
 AuthConfiguration.AddAuthConfiguration(builder);
 
