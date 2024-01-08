@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using MarketCashier.Application.ViewModels;
 using MarketCashier.Domain;
+using MarketCashier.Infra.ViewModels;
 
 namespace MarketCashier.Application.Mappers
 {
@@ -13,6 +9,7 @@ namespace MarketCashier.Application.Mappers
         public DomainToViewModelMapper()
         {
             CreateMap<User, UserViewModel>();
+            CreateMap<Product, ProductViewModel>();
         }
     }
 }

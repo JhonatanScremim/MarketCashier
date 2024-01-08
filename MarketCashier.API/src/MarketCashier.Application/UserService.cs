@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using MarketCashier.Application.Interfaces;
-using MarketCashier.Application.ViewModels;
-using MarketCashier.Domain;
+using MarketCashier.Infra.ViewModels;
 using MarketCashier.Repository.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

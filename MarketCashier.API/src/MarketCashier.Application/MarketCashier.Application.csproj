@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MarketCashier.Domain\MarketCashier.Domain.csproj" />
     <ProjectReference Include="..\MarketCashier.Repository\MarketCashier.Repository.csproj" />
+    <ProjectReference Include="..\MarketCashier.Infra\MarketCashier.Infra.csproj" />
   </ItemGroup>
 
 </Project>

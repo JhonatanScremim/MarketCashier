@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketCashier.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketCashier.Repository", "MarketCashier.Repository\MarketCashier.Repository.csproj", "{4C643C8F-AB9B-452D-BC5B-03F6762A9129}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketCashier.Infra", "MarketCashier.Infra\MarketCashier.Infra.csproj", "{73EA37C1-CC4A-42ED-BFC6-D484D39A6CF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{4C643C8F-AB9B-452D-BC5B-03F6762A9129}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C643C8F-AB9B-452D-BC5B-03F6762A9129}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C643C8F-AB9B-452D-BC5B-03F6762A9129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73EA37C1-CC4A-42ED-BFC6-D484D39A6CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73EA37C1-CC4A-42ED-BFC6-D484D39A6CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73EA37C1-CC4A-42ED-BFC6-D484D39A6CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73EA37C1-CC4A-42ED-BFC6-D484D39A6CF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

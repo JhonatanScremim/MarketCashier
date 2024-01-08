@@ -1,16 +1,10 @@
-using System.Security.Claims;
-using System.Text;
 using MarketCashier.API;
 using MarketCashier.Application;
 using MarketCashier.Application.Interfaces;
-using MarketCashier.Domain;
 using MarketCashier.Repository;
 using MarketCashier.Repository.Context;
 using MarketCashier.Repository.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +20,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 

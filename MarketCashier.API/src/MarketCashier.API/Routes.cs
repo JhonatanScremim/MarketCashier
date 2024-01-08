@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using MarketCashier.Application.Interfaces;
 using MarketCashier.Domain;
+using MarketCashier.Infra.Models;
 
 namespace MarketCashier.API
 {
@@ -35,6 +32,17 @@ namespace MarketCashier.API
                     return Results.BadRequest(e.Message);
                 }
             });
+
+            app.MapGet("/get-paginated", async Task<IResult>([AsParameters] PageParams pageParams, IProductService _productService) => 
+            {
+                try{
+
+                    return Results.Ok(await _productService.GetPaginated(pageParams));
+                }
+                catch(Exception e){
+                    return Results.BadRequest(e.Message);
+                }
+            }).RequireAuthorization();;
         }
     }
 }

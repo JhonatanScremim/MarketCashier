@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MarketCashier.Domain;
 using MarketCashier.Repository.Context;
 using MarketCashier.Repository.Interfaces;
