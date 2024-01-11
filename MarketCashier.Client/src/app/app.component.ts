@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<a [routerLink]="['login']">login</a>
+  template: `
   <router-outlet></router-outlet>
   `,
 })
