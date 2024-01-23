@@ -1,7 +1,9 @@
 using System.Security.Claims;
+using MarketCashier.Application.Exceptions;
 using MarketCashier.Application.Interfaces;
 using MarketCashier.Domain;
 using MarketCashier.Infra.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace MarketCashier.API
 {
@@ -27,6 +29,9 @@ namespace MarketCashier.API
             {
                 try{
                     return Results.Ok(await userService.LoginUser(model.Username, model.Password));
+                }
+                catch(InvalidUserException e){
+                    return Results.BadRequest(e.Message);
                 }
                 catch(Exception e){
                     return Results.BadRequest(e.Message);

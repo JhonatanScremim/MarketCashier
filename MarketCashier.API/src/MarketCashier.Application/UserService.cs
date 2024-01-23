@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AutoMapper;
+using MarketCashier.Application.Exceptions;
 using MarketCashier.Application.Interfaces;
 using MarketCashier.Infra.ViewModels;
 using MarketCashier.Repository.Interfaces;
@@ -48,7 +49,7 @@ namespace MarketCashier.Application
             var user = _mapper.Map<UserViewModel>(await _userRepository.LoginUser(username, password));
 
             if (user == null)
-                throw new Exception("Invalid username or password");
+                throw new InvalidUserException("Usuário ou senha invalidos");
             
             user.Token = GenerateToken(user);
             user.Password = "";
