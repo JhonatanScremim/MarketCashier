@@ -21,7 +21,7 @@ export class AuthService {
       map((res) => {
         localStorage.removeItem('access_token');
         localStorage.setItem('access_token', JSON.stringify(res.token))
-        return this.router.navigate(['login']);
+        return this.router.navigate(['']);
       }),
       catchError((err) => {
         console.log(err);
@@ -34,7 +34,7 @@ export class AuthService {
 
   public logout(){
     localStorage.removeItem('access_token');
-    return this.router.navigate(['']);
+    return this.router.navigate(['login']);
   }
 
   public isAuthenticated(): boolean{

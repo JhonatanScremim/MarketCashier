@@ -6,10 +6,12 @@ import { ComponentsRoutingModule } from './components-routing.module';
 
 //Pages
 import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
