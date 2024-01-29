@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Criar produto</h1>
+<div mat-dialog-content>
+  <ul>
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="data.name" />
+    </mat-form-field>
+  </ul>
+  <ul>
+    <mat-form-field>
+      <mat-label>Marca</mat-label>
+      <input matInput [(ngModel)]="data.brand" />
+    </mat-form-field>
+  </ul>
+  <ul>
+    <mat-form-field>
+      <mat-label>Peso</mat-label>
+      <input matInput [(ngModel)]="data.price" />
+    </mat-form-field>
+  </ul>
+  <ul>
+    <mat-form-field>
+      <mat-label>Código de barras</mat-label>
+      <input matInput [(ngModel)]="data.barcode" />
+    </mat-form-field>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Criar</button>
+</div>
