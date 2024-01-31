@@ -14,6 +14,7 @@ import {
 export class ModalCreateComponent implements OnInit {
 
   model!: ProductElement;
+  isChange!: boolean;
 
     constructor(
       public dialogRef: MatDialogRef<ModalCreateComponent>,
@@ -22,6 +23,12 @@ export class ModalCreateComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.data.id != null){
+      this.isChange = true;
+    }
+    else{
+      this.isChange = false;
+    }
   }
 
   onNoClick(): void {
