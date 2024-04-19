@@ -29,6 +29,12 @@ namespace MarketCashier.Application
 
             return new PageList<ProductViewModel>(pageParams.PageNumber, pageParams.PageSize, totalCount, products);
         }
+
+        public async Task<ProductViewModel>? GetProductByBarCodeAsync(long barCode)
+        {
+            var product = await _productRepository.GetProductByBarCodeAsync(barCode);
+            return _mapper.Map<ProductViewModel>(product);
+        }
         public async Task<bool> CreateAsync(ProductDTO dto)
         {
             return await _productRepository.Create(_mapper.Map<Product>(dto));

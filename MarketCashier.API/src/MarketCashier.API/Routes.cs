@@ -49,6 +49,17 @@ namespace MarketCashier.API
                 }
             }).RequireAuthorization();
 
+            app.MapGet("/get-by-barcode/{barCode}", async Task<IResult>(long barCode, IProductService _productService) => 
+            {
+                try{
+
+                    return Results.Ok(await _productService.GetProductByBarCodeAsync(barCode));
+                }
+                catch(Exception e){
+                    return Results.BadRequest(e.Message);
+                }
+            }).RequireAuthorization();
+
             app.MapPost("/create", async Task<IResult>(ProductDTO dto, IProductService _productService) => 
             {
                 try{

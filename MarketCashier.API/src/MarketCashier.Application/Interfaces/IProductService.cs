@@ -7,6 +7,7 @@ namespace MarketCashier.Application.Interfaces
     public interface IProductService
     {
         Task<PageList<ProductViewModel>>? GetPaginated(PageParams pageParams);
+        Task<ProductViewModel>? GetProductByBarCodeAsync(long barCode);
         Task<bool> CreateAsync(ProductDTO dto);
     }
 }
