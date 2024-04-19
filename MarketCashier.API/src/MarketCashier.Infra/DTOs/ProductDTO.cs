@@ -9,7 +9,7 @@ namespace MarketCashier.Infra.DTOs
         [Required]
         public string? Brand { get; set; }
         [Required]
-        public double Value { get; set; }
+        public double Price { get; set; }
         [Required]
         public long BarCode { get; set; }
     }
