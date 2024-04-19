@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using MarketCashier.Application.Interfaces;
+using MarketCashier.Domain;
+using MarketCashier.Infra.DTOs;
 using MarketCashier.Infra.Models;
 using MarketCashier.Infra.ViewModels;
 using MarketCashier.Repository.Interfaces;
@@ -30,6 +28,10 @@ namespace MarketCashier.Application
                 products = _mapper.Map<List<ProductViewModel>>(await queryPaginated.ToListAsync());
 
             return new PageList<ProductViewModel>(pageParams.PageNumber, pageParams.PageSize, totalCount, products);
+        }
+        public async Task<bool> CreateAsync(ProductDTO dto)
+        {
+            return await _productRepository.Create(_mapper.Map<Product>(dto));
         }
     }
 }

@@ -2,8 +2,8 @@ using System.Security.Claims;
 using MarketCashier.Application.Exceptions;
 using MarketCashier.Application.Interfaces;
 using MarketCashier.Domain;
+using MarketCashier.Infra.DTOs;
 using MarketCashier.Infra.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace MarketCashier.API
 {
@@ -47,7 +47,18 @@ namespace MarketCashier.API
                 catch(Exception e){
                     return Results.BadRequest(e.Message);
                 }
-            }).RequireAuthorization();;
+            }).RequireAuthorization();
+
+            app.MapPost("/create", async Task<IResult>(ProductDTO dto, IProductService _productService) => 
+            {
+                try{
+
+                    return Results.Ok(await _productService.CreateAsync(dto));
+                }
+                catch(Exception e){
+                    return Results.BadRequest(e.Message);
+                }
+            }).RequireAuthorization();
         }
     }
 }

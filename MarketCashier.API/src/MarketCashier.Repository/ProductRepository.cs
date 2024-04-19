@@ -13,12 +13,19 @@ namespace MarketCashier.Repository
         {
             _context = context;
         }
+
         public IQueryable<Product>? GetPaginated(PageParams pageParams, out int totalCount)
         {
             var query = _context.Product;
 
             totalCount = query.Count();
             return query;
+        }
+        public async Task<bool> Create(Product product)
+        {
+            _context.Product.Add(product);
+            
+            return (await _context.SaveChangesAsync() > 0);
         }
     }
 }
