@@ -8,6 +8,7 @@ namespace MarketCashier.App
     {
         ApiHelper _apiHelper;
         List<Product> basket;
+        double basketValue;
 
         public FormMain()
         {
@@ -36,9 +37,10 @@ namespace MarketCashier.App
 
         private async void BtAddProduct_Click(object sender, EventArgs e)
         {
+            richTxtBoxTotalPrice.Clear();
             if (TxtBoxBarCode.Text == "")
             {
-                MessageBox.Show("Preecha o campo, ANIMAL!");
+                MessageBox.Show("Preecha o campo!");
                 return;
             }
 
@@ -46,10 +48,17 @@ namespace MarketCashier.App
             var product = await _apiHelper.GetProductByBarCode(barCode);
             basket.Add(product);
 
-            string linhaFormatada = $"{product.Id, -5} {product.Name, -15} x1  ----------------------- {product.Price}\n";
-            linhaFormatada += new string('-', 70) + "\n";
+            string linhaFormatada = $"{product.Id,-5} {$"{product.Name}, {product.Brand}",-15} x1  ----------------------- {product.Price}\n";
+            linhaFormatada += new string('-', 60) + "\n";
 
-            RichTxtBoxProducts.AppendText(linhaFormatada);            
+            RichTxtBoxProducts.AppendText(linhaFormatada);
+            basketValue += product.Price;
+            richTxtBoxTotalPrice.AppendText($"Valor:\n\n\n" + $"                      R$ {string.Format("{0:F2}", basketValue)}");
+        }
+
+        private void BtCheckout_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
