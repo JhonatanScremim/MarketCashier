@@ -33,6 +33,7 @@
             BtAddProduct = new Button();
             richTxtBoxTotalPrice = new RichTextBox();
             BtCheckout = new Button();
+            ComboBoxPaymentType = new ComboBox();
             SuspendLayout();
             // 
             // TxtBoxBarCode
@@ -81,12 +82,22 @@
             BtCheckout.UseVisualStyleBackColor = true;
             BtCheckout.Click += BtCheckout_Click;
             // 
+            // ComboBoxPaymentType
+            // 
+            ComboBoxPaymentType.FormattingEnabled = true;
+            ComboBoxPaymentType.Items.AddRange(new object[] { "Debito", "Credito" });
+            ComboBoxPaymentType.Location = new Point(581, 131);
+            ComboBoxPaymentType.Name = "ComboBoxPaymentType";
+            ComboBoxPaymentType.Size = new Size(121, 23);
+            ComboBoxPaymentType.TabIndex = 6;
+            // 
             // FormMain
             // 
             AcceptButton = BtAddProduct;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ComboBoxPaymentType);
             Controls.Add(BtCheckout);
             Controls.Add(richTxtBoxTotalPrice);
             Controls.Add(BtAddProduct);
@@ -106,5 +117,6 @@
         private Button BtAddProduct;
         private RichTextBox richTxtBoxTotalPrice;
         private Button BtCheckout;
+        private ComboBox ComboBoxPaymentType;
     }
 }

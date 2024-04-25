@@ -1,5 +1,6 @@
 using MarketCashier.App.Helpers;
 using MarketCashier.App.Models;
+using MarketCashier.App.Models.Enums;
 using System.Drawing;
 
 namespace MarketCashier.App
@@ -58,7 +59,28 @@ namespace MarketCashier.App
 
         private void BtCheckout_Click(object sender, EventArgs e)
         {
+            var paymentTypeIndex = ComboBoxPaymentType.SelectedIndex;
+            PaymentType paymentType;
 
+            switch (paymentTypeIndex)
+            {
+                case 0:
+                    paymentType = PaymentType.Debit;
+                    break;
+                case 1:
+                    paymentType = PaymentType.Credit;
+                    break;
+                default:
+                    paymentType = PaymentType.Debit; 
+                    break;
+            }
+
+            var checkout = new CheckoutItems()
+            {
+                PaymentType = paymentType,
+                Products = basket,
+                TotalPrice = basketValue
+            };
         }
     }
 }
