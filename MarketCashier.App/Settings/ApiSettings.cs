@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MarketCashier.App.Settings
+﻿namespace MarketCashier.App.Settings
 {
     public static class ApiSettings
     {
@@ -12,6 +6,5 @@ namespace MarketCashier.App.Settings
         public static string Username { get; set; } = "admin";
         public static string Password { get; set; } = "admin";
         public static string? Token { get; set; }
-
     }
 }

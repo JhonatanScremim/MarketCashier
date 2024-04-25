@@ -9,7 +9,7 @@ namespace MarketCashier.App.Models
 {
     public class CheckoutItems
     {
-        public PaymentType PaymentType { get; set; }
+        public string PaymentType { get; set; }
         public List<Product> Products { get; set; }
         public double TotalPrice { get; set; }
     }

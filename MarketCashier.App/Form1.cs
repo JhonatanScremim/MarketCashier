@@ -1,7 +1,6 @@
 using MarketCashier.App.Helpers;
 using MarketCashier.App.Models;
 using MarketCashier.App.Models.Enums;
-using System.Drawing;
 
 namespace MarketCashier.App
 {
@@ -77,10 +76,14 @@ namespace MarketCashier.App
 
             var checkout = new CheckoutItems()
             {
-                PaymentType = paymentType,
+                PaymentType = Enum.GetName(typeof(PaymentType), paymentType) ?? "",
                 Products = basket,
-                TotalPrice = basketValue
+                TotalPrice = Math.Round(basketValue, 2)
             };
+
+            var rabbit = new RabbitMQMessageSenderHelper();
+
+            rabbit.SendMessage(checkout);
         }
     }
 }
