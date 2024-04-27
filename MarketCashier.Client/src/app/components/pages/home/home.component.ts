@@ -12,7 +12,7 @@ export interface ProductElement {
   name: string;
   brand: string;
   price: number;
-  barcode: number;
+  barCode: number;
 }
 
 @Component({
@@ -48,14 +48,14 @@ export class HomeComponent implements OnInit {
               name: "",
               brand: "",
               price: null,
-              barcode: null,
+              barCode: null,
             }
           : {
               id: model.id,
               name: model.name,
               brand: model.brand,
               price: model.price,
-              barcode: model.barcode,
+              barCode: model.barCode,
             },
     });
 
@@ -64,9 +64,11 @@ export class HomeComponent implements OnInit {
         if (this.dataSource.map((x) => x.id).includes(result.id)) {
           this.dataSource[result.id - 1] = result;
         } else {
-          this.dataSource.push(result);
+          this.productService.createProduct(result).subscribe((data: ProductElement) => {
+            this.dataSource.push(result);
+            this.table.renderRows(); //Irá renderizar novamente a tabela após inserir o novo produto na lista
+          })
         }
-        this.table.renderRows(); //Irá renderizar novamente a tabela após inserir o novo produto na lista
       }
     });
   }
