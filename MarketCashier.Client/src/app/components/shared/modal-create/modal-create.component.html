@@ -16,13 +16,13 @@
   <ul>
     <mat-form-field>
       <mat-label>Preço</mat-label>
-      <input matInput [(ngModel)]="data.price" />
+      <input matInput currencyMask [(ngModel)]="data.price" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }"/>
     </mat-form-field>
   </ul>
   <ul>
     <mat-form-field>
       <mat-label>Código de barras</mat-label>
-      <input matInput [(ngModel)]="data.barCode" />
+      <input matInput type="number" [(ngModel)]="data.barCode" />
     </mat-form-field>
   </ul>
 </div>

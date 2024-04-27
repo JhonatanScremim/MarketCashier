@@ -19,6 +19,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule } from "@angular/forms";
 import { ModalCreateComponent } from "./shared/modal-create/modal-create.component";
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ModalCreateComponent } from "./shared/modal-create/modal-create.compone
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    CurrencyMaskModule
   ],
 })
 export class ComponentsModule {}

@@ -1,0 +1,21 @@
+/* Para ocultar as setas em navegadores baseados no WebKit como Chrome, Safari, etc. */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Para ocultar as setas em navegadores baseados no Firefox */
+input[type="number"]::-moz-focus-inner {
+  border: 0;
+}
+
+input[type="number"]::-moz-range-progress {
+  background-color: transparent; /* Firefox 25+ */
+}
+
+/* Para ocultar as setas no IE11 */
+input[type="number"]::-ms-clear,
+input[type="number"]::-ms-reveal {
+  display: none;
+}
