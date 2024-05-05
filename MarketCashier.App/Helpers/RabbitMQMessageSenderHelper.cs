@@ -22,7 +22,7 @@ namespace MarketCashier.App.Helpers
             _queueName = RabbitMQSettings.QueueName;
         }
 
-        public void SendMessage(CheckoutItems baseMessage)
+        public bool SendMessage(CheckoutItems baseMessage)
         {
             var factory = new ConnectionFactory()
             {
@@ -32,10 +32,32 @@ namespace MarketCashier.App.Helpers
             };
             _connection = factory.CreateConnection();
 
-            using var channel = _connection.CreateModel();
-            channel.QueueDeclare(queue: _queueName, false, false, false, arguments: null);
-            byte[] body = GetMessageAsByteArray(baseMessage);
-            channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
+            using (var channel = _connection.CreateModel())
+            {
+                // Declara a fila se ela não existir
+                channel.QueueDeclare(queue: _queueName,
+                                     durable: false,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
+
+                // Habilita confirmações do publicador
+                channel.ConfirmSelect();
+
+                byte[] body = GetMessageAsByteArray(baseMessage);
+
+                // Publica a mensagem
+                channel.BasicPublish(exchange: "",
+                                     routingKey: _queueName,
+                                     basicProperties: null,
+                                     body: body);
+
+                // Aguarda a confirmação
+                if (channel.WaitForConfirms())
+                    return true;
+                else
+                    return false;
+            }
         }
 
         private byte[] GetMessageAsByteArray(CheckoutItems baseMessage)

@@ -54,6 +54,7 @@ namespace MarketCashier.App
             RichTxtBoxProducts.AppendText(linhaFormatada);
             basketValue += product.Price;
             richTxtBoxTotalPrice.AppendText($"Valor:\n\n\n" + $"                      R$ {string.Format("{0:F2}", basketValue)}");
+            TxtBoxBarCode.Text = "";
         }
 
         private void BtCheckout_Click(object sender, EventArgs e)
@@ -83,7 +84,18 @@ namespace MarketCashier.App
 
             var rabbit = new RabbitMQMessageSenderHelper();
 
-            rabbit.SendMessage(checkout);
+            if (rabbit.SendMessage(checkout))
+                FinalizePayment();
+            else
+                MessageBox.Show("Erro, por favor tente mais tarde");
+        }
+
+        private void FinalizePayment()
+        {
+            MessageBox.Show("Sucesso");
+            TxtBoxBarCode.Text = "";
+            richTxtBoxTotalPrice.Clear();
+            RichTxtBoxProducts.Clear();
         }
     }
 }
