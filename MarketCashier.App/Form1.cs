@@ -96,6 +96,8 @@ namespace MarketCashier.App
             TxtBoxBarCode.Text = "";
             richTxtBoxTotalPrice.Clear();
             RichTxtBoxProducts.Clear();
+            basket = new List<Product>();
+            basketValue = 0;
         }
     }
 }

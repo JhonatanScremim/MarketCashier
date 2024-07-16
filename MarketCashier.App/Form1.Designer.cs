@@ -104,6 +104,7 @@
             Controls.Add(RichTxtBoxProducts);
             Controls.Add(TxtBoxBarCode);
             Name = "FormMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Caixa";
             Load += FormMain_Load;
             ResumeLayout(false);
