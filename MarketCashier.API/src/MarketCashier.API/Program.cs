@@ -64,3 +64,5 @@ app.UseAuthorization();
 app.AddRoutes(builder);
 
 app.Run();
+
+public partial class Program { }

@@ -8,6 +8,10 @@ namespace MarketCashier.API
     {
         public static void AddAuthConfiguration(WebApplicationBuilder builder)
         {
+            // Verifica se está em ambiente de testes
+            var isTesting = builder.Environment.EnvironmentName == "Testing";
+            if (isTesting) return;
+
             var key = Encoding.ASCII.GetBytes(builder.Configuration.GetValue<string>("TokenKey") ?? throw new Exception("No key found!"));
             builder.Services.AddAuthentication(x => {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
