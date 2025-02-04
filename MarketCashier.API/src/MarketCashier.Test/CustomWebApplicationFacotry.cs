@@ -1,10 +1,13 @@
-﻿using MarketCashier.Repository.Interfaces;
+﻿using MarketCashier.Application.Interfaces;
+using MarketCashier.Infra.Models;
+using MarketCashier.Repository.Interfaces;
 using MarketCashier.Repository.Mocks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Moq;
 using System.Net.Http;
 
 namespace MarketCashier.Test

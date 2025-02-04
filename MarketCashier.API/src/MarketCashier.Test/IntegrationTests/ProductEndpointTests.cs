@@ -3,6 +3,9 @@ using System.Net;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Text.Json;
+using MarketCashier.Infra.Models;
+using MarketCashier.Domain;
+using Moq;
 
 namespace MarketCashier.Test.IntegrationTests
 {
@@ -16,18 +19,19 @@ namespace MarketCashier.Test.IntegrationTests
         }
 
         [Fact]
-        public async Task GetProductByBarCode_DeveRetornar200_QuandoProdutoExiste()
+        public async Task GetProductPaginated_DeveRetornar200_QuandoEncontrar()
         {
-            //Arrange 
-            long barCode = 123456;
+            //Arrange
+            var pageParams = new PageParams()
+            { PageNumber = 1, PageSize = 10};
 
             //Act
-            var response = await _client.GetAsync($"/get-by-barcode/{barCode}");
+            var response = await _client.GetAsync($"/get-paginated?pageNumber={pageParams.PageNumber}&pageSize={pageParams.PageSize}");
 
             //Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            var product = await response.Content.ReadFromJsonAsync<ProductViewModel>();
-            Assert.NotNull(product);
+            var products = await response.Content.ReadFromJsonAsync<PageList<ProductViewModel>>();
+            Assert.NotNull(products);            
         }
 
         [Fact]

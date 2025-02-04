@@ -1,6 +1,7 @@
 ﻿using MarketCashier.Domain;
 using MarketCashier.Infra.Models;
 using MarketCashier.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MarketCashier.Repository.Mocks
 {
@@ -21,9 +22,16 @@ namespace MarketCashier.Repository.Mocks
             return Task.FromResult(product);
         }
 
-        public IQueryable<Product>? GetPaginated(PageParams pageParams, out int totalCount)
+        public Task<(List<Product>, int totalCount)> GetPaginated(PageParams pageParams)
         {
-            throw new NotImplementedException();
+
+            var totalCount = _products.Count();
+            var products = _products
+                .AsQueryable() // Converte a lista para IQueryable
+                .Skip((pageParams.PageNumber - 1) * pageParams.PageSize) // Pula os itens das páginas anteriores
+                .Take(pageParams.PageSize).ToList(); // Retorna apenas os itens da página atual
+
+            return Task.FromResult((products, totalCount));
         }
 
         public Task<bool> Create(Product product)

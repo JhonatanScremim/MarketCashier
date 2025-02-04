@@ -15,12 +15,15 @@ namespace MarketCashier.Repository
             _context = context;
         }
 
-        public IQueryable<Product>? GetPaginated(PageParams pageParams, out int totalCount)
+        public async Task<(List<Product>, int totalCount)> GetPaginated(PageParams pageParams)
         {
-            var query = _context.Product;
+            var products = _context.Product;
 
-            totalCount = query.Count();
-            return query;
+            var totalCount = products.Count();
+            return (await products
+                .AsQueryable()
+                .Skip((pageParams.PageNumber - 1) * pageParams.PageSize)
+                .Take(pageParams.PageSize).ToListAsync(), totalCount); 
         }
         public async Task<Product> GetProductByBarCodeAsync(long barCode)
         {

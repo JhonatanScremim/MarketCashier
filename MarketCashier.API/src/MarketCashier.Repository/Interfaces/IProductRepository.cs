@@ -5,7 +5,7 @@ namespace MarketCashier.Repository.Interfaces
 {
     public interface IProductRepository
     {
-        IQueryable<Product>? GetPaginated(PageParams pageParams, out int totalCount);
+        Task<(List<Product>, int totalCount)> GetPaginated(PageParams pageParams);
         Task<Product> GetProductByBarCodeAsync(long barCode);
         Task<bool> Create(Product product);
     }

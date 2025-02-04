@@ -22,12 +22,10 @@ namespace MarketCashier.Application
 
         public async Task<PageList<ProductViewModel>>? GetPaginated(PageParams pageParams)
         {
-            var queryPaginated = _productRepository.GetPaginated(pageParams, out int totalCount);
-            var products = new List<ProductViewModel>();  
-            if (queryPaginated != null)
-                products = _mapper.Map<List<ProductViewModel>>(await queryPaginated.ToListAsync());
+            var (products, totalCount) = await _productRepository.GetPaginated(pageParams);
+            var productsViewModel = _mapper.Map<List<ProductViewModel>>(products);
 
-            return new PageList<ProductViewModel>(pageParams.PageNumber, pageParams.PageSize, totalCount, products);
+            return new PageList<ProductViewModel>(pageParams.PageNumber, pageParams.PageSize, totalCount, productsViewModel);
         }
 
         public async Task<ProductViewModel>? GetProductByBarCodeAsync(long barCode)
